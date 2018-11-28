@@ -1,0 +1,59 @@
+function Panning_Zooming_and_Rotating_the_View(test_name="") {
+   
+   switch (test_name) {
+       case "": 
+           Rotating(Modifier.None,Button.Button1,test_name);
+           Zooming(Modifier.None,Button.Button3,test_name);
+           Panning(Modifier.None,Button.Button2,test_name);
+           Rolling(Modifier.Control,Button.Button1,test_name);
+           ZoomingWheel(test_name);
+           
+       break;
+          
+       case "Solidworks":
+           
+            Rotating(Modifier.None,Button.Button3,test_name);
+            Zooming(Modifier.Control,Button.Button3,test_name);
+            Panning(Modifier.Shift,Button.Button3,test_name);
+            Rolling(Modifier.Control,Button.Button1,test_name);
+          
+       break;
+       
+       case "Pro-E":
+            
+            Rotating(Modifier.None,Button.Button3,test_name);
+            Zooming(Modifier.Shift,Button.Button3,test_name);
+            Panning(Modifier.Control,Button.Button3,test_name);
+            Rolling(Modifier.Control,Button.Button1,test_name);
+           
+       break;
+       
+       case "Trackball":
+          
+            Rotating(Modifier.None,Button.Button1,test_name);
+            Zooming(Modifier.None,Button.Button3,test_name);
+            Panning(Modifier.None,Button.Button2,test_name);
+            Rolling(Modifier.Control,Button.Button1,test_name);
+            
+       break;
+       
+       case "Joystick":
+            Rotating_Joy(Modifier.None,Button.Button1,test_name);
+            Zooming_Joy(Modifier.None,Button.Button3,test_name);
+            Panning_Joy(Modifier.None,Button.Button2,test_name);
+            Rolling_Joy(Modifier.Control,Button.Button1,test_name);
+           
+            break;
+       
+default:
+console.log('Wrong Interactor Style.');
+   }
+
+   // Panning.test();
+    
+}
+function Rotating(Modifier,Button,test_name){
+    mouseDrag(waitForObject(":*STAR-CCM+_StarCanvas_undefined"), 516, 305, -18, -200, Modifier, Button);
+    test.vp("VP-Scshot-Rotating" + test_name);  
+    Reset_Camera_View();
+}
